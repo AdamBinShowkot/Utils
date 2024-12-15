@@ -1,4 +1,5 @@
 const comparePrevNewArrayFnc=require('./utils/comparePrevNewArray.ts');
+const buildHierarchyTitleFnc=require('./utils/buildHierarchyTitle.ts');
 
 
 // Test For PrevArray and NewArray Compare
@@ -33,4 +34,17 @@ const newArr:any=[
     "SpcValueName": "12th"
   }
 ]
-console.log(comparePrevNewArrayFnc(prevArr,newArr,"SpcValueId","SpcValueId","ItemSpcValueMapBidId","IsActive"))
+//console.log(comparePrevNewArrayFnc(prevArr,newArr,"SpcValueId","SpcValueId","ItemSpcValueMapBidId","IsActive"))
+
+// Test Data for buildHierarchyTitle
+const data = [
+  { Id: 1, ParentId: 0, Title: "Team A" },
+  { Id: 2, ParentId: 1, Title: "Team B" },
+  { Id: 3, ParentId: 2, Title: "Team C" },
+  { Id: 4, ParentId: 0, Title: "Team X" },
+  { Id: 5, ParentId: 4, Title: "Team Y" },
+  { Id: 6, ParentId: 4, Title: "Team Z" },
+  { Id: 7, ParentId: 6, Title: "Team E" },
+];
+const updatedData:any = buildHierarchyTitleFnc(data, "Id", "Title", "ParentId");
+console.log(updatedData)
